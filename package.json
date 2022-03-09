@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/fabiandarga/exercise-express-valitaion-user#readme",
   "dependencies": {
-    "express": "^4.17.3",
-    "validatorjs": "^3.22.1"
+    "express": "^4.17.3"
   }
 }

@@ -1,25 +1,25 @@
-# Profil Daten Validieren
+# Urlaubs-Kalendar API
 
-Die Route `POST /profiles` soll ein JSON Objekt mit user daten bekommen.
+Wir wollen eine API bauen, die Urlaubs-Zeiträume von Mitarbeitern speichern kann.
+
+Zum Validieren benutzen wir diesmal express-validator:  
+[https://express-validator.github.io/docs/index.html]  
+
+mit den regeln von validator.js:  
+[https://github.com/validatorjs/validator.js]
+
+### Daten
+Die Route `POST /dates` soll ein JSON Objekt mit Kalender daten bekommen.
 z.B.:  
 ```
 {
-    userId: 5,
-    hobbies: ['football', 'reading'],
-    pets: [
-        {
-            name: 'Fluffy',
-            kind: 'Dog',
-            age: 3,
-        }
-    ],
-    favorites: {
-        food: 'Pizza',
-        movie: "Matrix 1",
-        series: "Dr. Who"
-    },
+    "person": "Ulrike"
+    "title": "Sommerurlaub",
+    "startDate": "2022-06-23",
+    "endDate": "2022-07-07"
 }
 ```
+Das Datum (en: Date) ist immer im Format: Jahr-Monat-Tag (YYYY-MM-DD)
 ### Validierung
 Der Server soll testen ob die Daten den vorgegebenen Regeln entsprechen.
 
@@ -27,25 +27,20 @@ Der Server soll testen ob die Daten den vorgegebenen Regeln entsprechen.
 * Wenn es invalide Daten gibt, sollen alle Fehler-Meldungen zurückgegeben werden.
 
 ### Regeln
-#### userId
+#### person
 * Required
-* Nur Ganze Zahlen
-* Größer oder gleich 0
-#### hobbies
+* Ein String
+* Mindestens 2 Zeichen
+* Höchstens 30 Zeichen
+#### title
 * Required
-* Ein Array
-* Mindestens ein Hobby
-* Hobbies sind Strings
-#### pets
-* NICHT Required
-* Ein Array
-* Pets sind Objekte mit:
-    * name: Required, String
-    * kind: Required, String
-    * age: Required, Integer
+* Ein String
+* Mindestens 5 Zeichen
+* Höchstens 30 Zeichen
+#### startDate
+* Required
+* Ein Datum
 #### Favorites
-* NICHT Required
-* Favorites ist ein Objekt mit diesen (optionalen) Properties:
-    * food: String, 5-30 Zeichen
-    * movie: String, 5-30 Zeichen
-    * series: Integer, 5-30 Zeichen
+* Required
+* Ein Datum
+* Muss NACH dem ersten Datum sein (startDate < endDate)

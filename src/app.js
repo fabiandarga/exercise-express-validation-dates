@@ -8,7 +8,7 @@ const app = express()
 app.use(express.json())
 
 app.get('/', index);
-app.use('/profiles', profileRouter);
+app.use('/dates', profileRouter);
 
 
 
