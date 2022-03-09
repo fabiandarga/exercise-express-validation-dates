@@ -1,6 +1,7 @@
 # Urlaubs-Kalendar API
 
-Wir wollen eine API bauen, die Urlaubs-Zeiträume von Mitarbeitern speichern kann.
+Wir wollen eine API bauen, die Urlaubs-Zeiträume von Mitarbeitern speichern kann.  
+Erstmal wollen wir nur die Validierung einbauen. Noch keine Datenbank.
 
 Zum Validieren benutzen wir diesmal express-validator:  
 [https://express-validator.github.io/docs/index.html]  
